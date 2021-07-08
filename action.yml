@@ -19,5 +19,5 @@ runs:
   using: "composite"
   steps:
     - id: building
-      run: ${{ github.action_path }}/action.sh ${{ inputs.kernelrelease }} ${{ inputs.probe }}
+      run: ${{ github.action_path }}/action.sh ${{ inputs.kernelrelease }} ${{ inputs.probe }} $${{ github.action_path }}/ubuntu.yaml
       shell: bash
