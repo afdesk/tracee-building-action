@@ -1,0 +1,23 @@
+---
+name: Demo workflow for the Tracee Building Action
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  build:
+    name: Build
+    runs-on: ubuntu-20.04
+    steps:
+      - uses: actions/checkout@v2
+
+      - uses: afdesk/tracee-building-action@main
+        with:
+          kernelrelease: '4.18-rc4'
+          probe: 'trace.ebpf.o'
+
+      - uses: actions/upload-artifact@v2
+        with:
+          name: trace.ebpf.o       
+          path: trace.ebpf.o
