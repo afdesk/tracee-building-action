@@ -1,0 +1,4 @@
+target: ubuntu-mainline
+driverversion: dev
+timeout: 120
+builderimage: dramf/tracee-ebpf-builder:latest
