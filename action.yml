@@ -1,0 +1,23 @@
+name: 'The Tracee EBPF build action'
+description: 'This action builds the ebpf program for Tracee'
+inputs:
+  kernelrelease:
+    description: 'kernel version to build the module for'
+    required: true
+    default: '4.18-rc4'
+  probe:
+    description: 'kernel version to build the module for'
+    required: true
+    default: 'trace.ebpf.o'
+
+outputs:
+  probe:
+    description: 'the resulting eBPF probe'
+#    value: ${{ steps.building.outputs.random-id }}
+
+runs:
+  using: "composite"
+  steps:
+    - id: building
+      run: ${{ github.action_path }}/action.sh ${{ inputs.kernelrelease }} ${{ inputs.probe }}
+      shell: bash
